@@ -1,4 +1,4 @@
-from FD_1D_nobc import mesh, u_0, ex_solution,animate_sol, \
+from FD_1D_nobc import mesh, u_0, ex_solution, animate_sol, \
     exp_time_aval_space, exp_time_amont_space, exp_time_centre_space, imp_time_amont_space
 import numpy as np
 from utilities.options import configure_matplotib
@@ -6,15 +6,15 @@ configure_matplotib()
 
 if __name__ == '__main__':
 
-    num_cas = 4 #int(input("Enter case number : "))
+    num_cas = 2 #int(input("Enter case number : "))
 
     t_end = 10
     Dt = t_end/100
     n_t = int(t_end / Dt + 1)
     t_vec = np.linspace(0, t_end, n_t)
 
-    c = float(input("Enter physical velocity  : "))
-    c_num = float(input("Enter numerical velocity  : "))
+    c = 1 # float(input("Enter physical velocity  : "))
+    c_num = 2 # float(input("Enter numerical velocity  : "))
     L_0 = 10
     L_domain = abs(c)*t_end + L_0
 

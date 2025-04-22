@@ -5,7 +5,7 @@ from matplotlib.collections import LineCollection
 from matplotlib import animation
 import os 
 
-directory_results = "./results/"
+directory_results = "./examples/results/"
 if not os.path.exists(directory_results):
     os.makedirs(directory_results)
 
@@ -76,8 +76,6 @@ def mesh(x_vec, t_vec, save_fig=False, plot_fig=False):
 def animate_sol(x_vec, t_vec, u_num, c, sig, save_anim = False):
     fig = plt.figure()
 
-
-
     min_sol = 0
     max_sol = 1
 
@@ -128,13 +126,10 @@ def animate_sol(x_vec, t_vec, u_num, c, sig, save_anim = False):
                                    frames=len(t_vec), interval=0, blit=False)
 
     # save the animation as an mp4.  This requires ffmpeg or mencoder to be
-    # installed.  The extra_args ensure that the x264 codec is used, so that
-    # the video can be embedded in html5.  You may need to adjust this for
-    # your system: for more information, see
-    # http://matplotlib.sourceforge.net/api/animation_api.html
+    # installed. 
     if save_anim:
         name_vid = input("Name video : ")
-        anim.save(directory_results + name_vid + '.mp4', fps=20, extra_args=['-vcodec', 'libx264'])
+        anim.save(directory_results + name_vid + '.mp4', fps=20, writer='ffmpeg')
 
     plt.show()
 
